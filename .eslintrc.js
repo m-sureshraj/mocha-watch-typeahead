@@ -14,5 +14,7 @@ module.exports = {
     'no-console': 0,
     'prefer-template': 2,
     curly: [2, 'multi-line'],
+    // https://eslint.org/docs/2.0.0/rules/no-unused-vars
+    'no-unused-vars': [2, { args: 'all', argsIgnorePattern: '^_' }],
   },
 };
