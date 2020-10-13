@@ -12,6 +12,7 @@
     "build"
   ],
   "scripts": {
+    "prebuild": "rimraf build",
     "build": "tsc",
     "dev": "tsc --watch",
     "type-check": "tsc --noEmit",
@@ -60,6 +61,7 @@
   },
   "devDependencies": {
     "@sureshraj/prettier-config": "^1.0.0",
+    "@types/is-glob": "^4.0.1",
     "@types/node": "^10.17.39",
     "@typescript-eslint/eslint-plugin": "^4.4.0",
     "@typescript-eslint/parser": "^4.4.0",
@@ -71,6 +73,8 @@
     "lint-staged": "^10.4.0",
     "mocha": "^8.1.3",
     "prettier": "2.1.2",
+    "rimraf": "^3.0.2",
+    "ts-node": "^9.0.0",
     "typescript": "^4.0.3"
   }
 }

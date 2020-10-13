@@ -1,12 +1,13 @@
-const { dim, yellow, white } = require('kleur');
-const { clearScreen } = require('ansi-escapes');
+import { dim, yellow, white } from 'kleur';
+import { clearScreen } from 'ansi-escapes';
 
-const { isDebugEnabled } = require('./util');
+import { isDebugEnabled } from './util';
 
 const arrow = '\u203A';
 
-function printFilterUsage(stdout = process.stdout) {
+export function printFilterUsage(stdout = process.stdout): void {
   if (!isDebugEnabled()) stdout.write(clearScreen);
+
   stdout.write(yellow().bold('Filter Mode\n\n'));
 
   stdout.write(
@@ -19,8 +20,9 @@ function printFilterUsage(stdout = process.stdout) {
   );
 }
 
-function printTestRunnerUsage(stdout = process.stdout) {
+export function printTestRunnerUsage(stdout = process.stdout): void {
   if (!isDebugEnabled()) stdout.write(clearScreen);
+
   stdout.write(yellow().bold('Test Runner Mode\n\n'));
 
   stdout.write(
@@ -32,8 +34,3 @@ function printTestRunnerUsage(stdout = process.stdout) {
     )}\n\n`
   );
 }
-
-module.exports = {
-  printFilterUsage,
-  printTestRunnerUsage,
-};
