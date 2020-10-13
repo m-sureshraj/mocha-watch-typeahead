@@ -1,2 +1,3 @@
-# mocha-watch-typeahead (WIP)
-Filter tests by file name
+# mocha-watch-typeahead
+
+> Interactive watch mode support for the mocha test framework. 
