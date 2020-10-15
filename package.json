@@ -38,11 +38,12 @@
   },
   "keywords": [
     "mocha",
-    "cli",
-    "typeahead"
+    "watch-mode",
+    "typeahead",
+    "cli"
   ],
   "author": "Sureshraj <m.s.suresh100@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/m-sureshraj/mocha-watch-typeahead/issues"
   },
