@@ -18,7 +18,7 @@ it directly depends on `mocha@8.1.3` (the latest version at the time of writing)
 
 ## Usage
 
-First, you have to configure the mocha. For that, please refer to its getting start [guide](https://mochajs.org/#getting-started).
+First, you have to configure the mocha. For that, please refer to the getting start [guide](https://mochajs.org/#getting-started).
 Then add the following npm script to the `package.json`.
 
 ```json
@@ -29,7 +29,7 @@ Then add the following npm script to the `package.json`.
 }
 ```
 
-Think `mocha-watch` is an alias for command `mocha`.
+Think `mocha-watch` as an alias for command `mocha`.
 You can pass all valid `mocha` options to the `mocha-watch` as well.
 The only difference is, it always runs in watch mode.
 
@@ -38,7 +38,7 @@ npm run test-watch
 ```
 
 Based on your mocha configuration, it collects all the matched
-test files and prompt autocomplete to filter tests by file name.
+test files and prompts autocomplete to filter tests by file name.
 You can filter tests by **glob** pattern as well.
 
 ![filter mode](https://raw.githubusercontent.com/m-sureshraj/mocha-watch-typeahead/HEAD/media/filter-mode.png)
@@ -49,9 +49,9 @@ You can filter tests by **glob** pattern as well.
 
 The `mocha-watch-typeahead` has a few known temporary limitations at the moment.
 
-* It only tested with the latest version of mocha `v8.1.3`. Probably it won't work with the older versions of mocha.
+* It is only tested with the latest version of mocha `v8.1.3`. Probably it won't work with the older versions of mocha.
 * It only supports serial run, although mocha's built-in watch mode has support for [parallel](https://mochajs.org/#-parallel-p) run.
-* It doesn't validate passed options.
+* It doesn't validate the passed options.
 
 If you encounter the following warning message in watch mode, you can safely ignore it. It's a known mocha [issue](https://github.com/mochajs/mocha/issues/117).
 
