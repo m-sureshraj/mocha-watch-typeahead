@@ -5,7 +5,7 @@
 The `mocha-watch-typeahead` is an attempt to add interactive
 watch mode support for the [Mocha](https://mochajs.org/) test framework. Besides rerunning tests on file changes, it provides a feature to filter tests by file name.
 
-> ![mocha-watch-typeahead in action](https://raw.githubusercontent.com/m-sureshraj/mocha-watch-typeahead/HEAD/media/mocha-watch-in-action.gif 'mocha-watch-typeahead in action')
+![mocha-watch-typeahead in action](https://raw.githubusercontent.com/m-sureshraj/mocha-watch-typeahead/HEAD/media/mocha-watch-in-action.gif)
 
 ## Install
 
@@ -41,16 +41,15 @@ Based on your mocha configuration, it collects all the matched
 test files and prompt autocomplete to filter tests by file name.
 You can filter tests by **glob** pattern as well.
 
-> ![mocha-watch-typeahead in action](https://raw.githubusercontent.com/m-sureshraj/mocha-watch-typeahead/HEAD/media/filter-mode.png 'filter mode')
+![filter mode](https://raw.githubusercontent.com/m-sureshraj/mocha-watch-typeahead/HEAD/media/filter-mode.png)
 
-Note, the above list won't display files that are loaded
-through the [--file](https://mochajs.org/#-file-filedirectoryglob) option.
+> Note, the above list won't display files that are loaded through the [--file](https://mochajs.org/#-file-filedirectoryglob) option.
 
 ## Temporary limitations
 
 The `mocha-watch-typeahead` has a few known temporary limitations at the moment.
 
-* It only tested with the latest version of mocha (v8.1.3). Probably it won't work with the older versions of mocha.
+* It only tested with the latest version of mocha `v8.1.3`. Probably it won't work with the older versions of mocha.
 * It only supports serial run, although mocha's built-in watch mode has support for [parallel](https://mochajs.org/#-parallel-p) run.
 * It doesn't validate passed options.
 
@@ -63,8 +62,8 @@ MaxListenersExceededWarning: Possible EventEmitter memory leak detected.
 
 ## Future improvements
 
-* Watch mode feedback speed can be increased by not watching non-filter test files.
-* Resolve the temporary limitations.
+- [ ] Watch mode feedback speed can be increased by not watching non-filter test files.
+- [ ] Resolve the temporary limitations.
 
 ## Credits
 
