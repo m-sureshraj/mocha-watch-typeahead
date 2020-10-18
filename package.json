@@ -1,6 +1,6 @@
 {
   "name": "mocha-watch-typeahead",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Interactive watch mode support for the mocha test framework.",
   "bin": {
     "mocha-watch": "./build/bin/mocha-watch.js"
