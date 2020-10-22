@@ -1,11 +1,13 @@
-const debug = require('debug')('cli');
-const { yellow } = require('kleur');
+import debugModule from 'debug';
+import { yellow } from 'kleur';
 
-const loadOptions = require('../mocha/load-options');
-const collectFiles = require('../mocha/collect-files');
-const promptFilter = require('./filter');
-const switchToTestRunnerMode = require('./test-runner');
-const { isDebugEnabled, lineBreak } = require('./util');
+import loadOptions from '../mocha/load-options';
+import collectFiles from '../mocha/collect-files';
+import promptFilter from './filter';
+import switchToTestRunnerMode from './test-runner';
+import { isDebugEnabled, lineBreak } from './util';
+
+const debug = debugModule('typeahead-cli');
 
 (async () => {
   try {
@@ -41,7 +43,7 @@ const { isDebugEnabled, lineBreak } = require('./util');
       process.exit();
     }
 
-    let filteredFiles = [];
+    let filteredFiles: string[] = [];
     if (collectedSpecFiles.length) {
       // note: filter list won't display files that are given through --file option
       filteredFiles = await promptFilter(collectedSpecFiles);

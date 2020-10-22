@@ -1,18 +1,28 @@
-const readline = require('readline');
-const debug = require('debug')('test-runner');
+import readline from 'readline';
+import debugModule from 'debug';
 
-const { printTestRunnerUsage } = require('./print');
-const { run } = require('../mocha/run');
-const { showCursor, hideCursor, isDebugEnabled, lineBreak } = require('./util');
-const promptFilter = require('./filter');
+import type { Key, ReRunner, Run, Files, MochaOptions } from './Types';
+
+import { RunnerState } from './Types';
+import { printTestRunnerUsage } from './print';
+import { run } from '../mocha/run';
+import { hideCursor, isDebugEnabled, lineBreak, showCursor } from './util';
+import promptFilter from './filter';
+
+const debug = debugModule('typeahead-test-runner');
+
+interface KeypressHandlerInput {
+  rl: readline.Interface;
+  reRunner: ReRunner;
+  files: Files;
+}
 
 let isInFilterMode = false;
-let boundedKeypressHandler = null;
-let filesToBeTest = [];
-const STATE_RUNNING = 'running';
+let boundedKeypressHandler: (...args: [unknown, Key]) => Promise<void>;
+let filesToBeTest: string[] = [];
 
 function getInitializedReadline() {
-  if (process.stdin.isTTY) process.stdin.setRawMode(true);
+  if (process.stdin.isTTY) process.stdin.setRawMode?.(true);
 
   const rl = readline.createInterface({
     input: process.stdin,
@@ -23,18 +33,18 @@ function getInitializedReadline() {
   return rl;
 }
 
-function closeReadline(rl) {
-  if (process.stdin.isTTY) process.stdin.setRawMode(false);
+function closeReadline(rl: readline.Interface) {
+  if (process.stdin.isTTY) process.stdin.setRawMode?.(false);
 
   process.stdin.removeListener('keypress', boundedKeypressHandler);
   rl.close();
 }
 
-function waitForTestsToStop(reRunner) {
+function waitForTestsToStop(reRunner: ReRunner): Promise<void> {
   return new Promise(resolve => {
     const runner = reRunner.getRunner();
 
-    if (!runner || runner.state !== STATE_RUNNING) {
+    if (!runner || runner.state !== RunnerState.running) {
       debug('tests have already stopped');
       return resolve();
     }
@@ -43,7 +53,7 @@ function waitForTestsToStop(reRunner) {
     const _runner = runner.abort();
 
     const id = setInterval(() => {
-      if (_runner.state !== STATE_RUNNING) {
+      if (_runner.state !== RunnerState.running) {
         debug('waiting for tests to stop');
         clearInterval(id);
         resolve();
@@ -52,7 +62,11 @@ function waitForTestsToStop(reRunner) {
   });
 }
 
-async function handleKeypress({ rl, reRunner, files }, _, key) {
+async function handleKeypress(
+  { rl, reRunner, files }: KeypressHandlerInput,
+  _: unknown,
+  key: Key
+) {
   // Ctrl + c || Esc
   if ((key.ctrl && key.name === 'c') || key.name === 'escape') {
     process.exit();
@@ -91,12 +105,16 @@ async function handleKeypress({ rl, reRunner, files }, _, key) {
   }
 }
 
-async function switchToTestRunnerMode(_filesToBeTest, files, mochaOptions) {
+export default async function switchToTestRunnerMode(
+  _filesToBeTest: string[],
+  files: Files,
+  mochaOptions: MochaOptions
+): Promise<void> {
   filesToBeTest = _filesToBeTest;
   const rl = getInitializedReadline();
 
   try {
-    const { watcher, reRunner } = await run(mochaOptions);
+    const { watcher, reRunner }: Run = await run(mochaOptions);
 
     watcher.on('ready', () => {
       reRunner.run(filesToBeTest);
@@ -130,5 +148,3 @@ async function switchToTestRunnerMode(_filesToBeTest, files, mochaOptions) {
     process.exit(1);
   }
 }
-
-module.exports = switchToTestRunnerMode;
