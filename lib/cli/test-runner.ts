@@ -1,7 +1,9 @@
 import readline from 'readline';
+
 import debugModule from 'debug';
 
-import type { Key, ReRunner, Run, Files, MochaOptions } from './Types';
+import type { Key, ReRunner, Run, MochaOptions } from './Types';
+import type { Files } from '../mocha/collect-files';
 
 import { RunnerState } from './Types';
 import { printTestRunnerUsage } from './print';
@@ -9,7 +11,7 @@ import { run } from '../mocha/run';
 import { hideCursor, isDebugEnabled, lineBreak, showCursor } from './util';
 import promptFilter from './filter';
 
-const debug = debugModule('typeahead-test-runner');
+const debug = debugModule('typeahead:test-runner');
 
 interface KeypressHandlerInput {
   rl: readline.Interface;
