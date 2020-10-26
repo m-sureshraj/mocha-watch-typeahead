@@ -7,7 +7,7 @@ import promptFilter from './filter';
 import switchToTestRunnerMode from './test-runner';
 import { isDebugEnabled, lineBreak } from './util';
 
-const debug = debugModule('typeahead-cli');
+const debug = debugModule('typeahead:cli');
 
 (async () => {
   try {
