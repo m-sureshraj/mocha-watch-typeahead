@@ -22,3 +22,7 @@ declare module 'mocha/lib/errors' {
     const constants: Constants;
   }
 }
+
+declare module 'mocha/lib/cli/options' {
+  export declare function loadOptions(argv: string[]): { [key: string]: unknown };
+}
