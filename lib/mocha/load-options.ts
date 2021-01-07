@@ -15,6 +15,7 @@ export interface MochaOptions {
   extension?: string[];
   ignore?: string[];
   spec?: string[];
+  require?: string[];
   [key: string]: unknown;
 }
 
