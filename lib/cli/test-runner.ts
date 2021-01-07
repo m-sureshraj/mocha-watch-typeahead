@@ -2,13 +2,13 @@ import readline from 'readline';
 
 import debugModule from 'debug';
 
-import type { Key, ReRunner, Run } from './Types';
+import type { Key } from './Types';
+import type { ReRunner, Run } from '../mocha/run';
 import type { MochaOptions } from '../mocha/load-options';
 import type { Files } from '../mocha/collect-files';
 
-import { RunnerState } from './Types';
 import { printTestRunnerUsage } from './print';
-import { run } from '../mocha/run';
+import { run, RunnerState } from '../mocha/run';
 import { hideCursor, isDebugEnabled, lineBreak, showCursor } from './util';
 import promptFilter from './filter';
 

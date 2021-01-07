@@ -15,9 +15,8 @@
     "prebuild": "rimraf build",
     "build": "tsc",
     "dev": "tsc --watch",
-    "type-check": "tsc --noEmit",
     "test": "echo 'coming soon..'",
-    "lint": "eslint '**/*.{js,ts}'",
+    "lint-all": "eslint '**/*.{js,ts}'",
     "lint-fix": "eslint --fix",
     "prettier": "prettier --write"
   },
@@ -28,7 +27,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,ts}": [
+    "*.{js,ts,json}": [
       "npm run lint-fix"
     ]
   },
@@ -65,6 +64,7 @@
     "@types/debug": "^4.1.5",
     "@types/is-glob": "^4.0.1",
     "@types/micromatch": "^4.0.1",
+    "@types/mocha": "^8.2.0",
     "@types/node": "^10.17.39",
     "@typescript-eslint/eslint-plugin": "^4.4.0",
     "@typescript-eslint/parser": "^4.4.0",
