@@ -4,7 +4,7 @@ import path from 'path';
 import type { Key } from './Types';
 
 import { printFilterUsage } from './print';
-import { autoComplete } from '../prompt';
+import { autoComplete } from 'cli-select-prompt';
 
 function handleKeypress(_: unknown, key: Key): void {
   // Ctrl + c || Esc
