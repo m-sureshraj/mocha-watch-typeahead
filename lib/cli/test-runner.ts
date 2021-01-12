@@ -2,8 +2,7 @@ import readline from 'readline';
 
 import debugModule from 'debug';
 
-import type { Key, ReRunner, Run } from './Types';
-import type { MochaOptions } from '../mocha/load-options';
+import type { Key, ReRunner, Run, MochaOptions } from './Types';
 import type { Files } from '../mocha/collect-files';
 
 import { RunnerState } from './Types';
