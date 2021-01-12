@@ -9,7 +9,7 @@ import { run } from '../mocha/run';
 import { hideCursor, isDebugEnabled, lineBreak, showCursor } from './util';
 import promptFilter from './filter';
 
-const debug = debugModule('typeahead-test-runner');
+const debug = debugModule('typeahead:test-runner');
 
 interface KeypressHandlerInput {
   rl: readline.Interface;

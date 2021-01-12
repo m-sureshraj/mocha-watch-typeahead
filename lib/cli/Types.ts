@@ -4,18 +4,15 @@ export interface Key {
   meta: boolean;
 }
 
-// Fixme: mocha/load-options.js should provide the following type
 export interface MochaOptions {
   [key: string]: string;
 }
 
-// Fixme: mocha/collect-files.js should provide the following type
 export interface Files {
   collectedSpecFiles: string[];
   filesGivenThroughFileOption: string[];
 }
 
-// Fixme: mocha/run.js should provide the following types
 export enum RunnerState {
   running = 'running',
 }
