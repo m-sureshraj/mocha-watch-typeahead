@@ -1,6 +1,5 @@
-// Custom type definitions for unexposed internal methods from Mocha v8.1.3
-
-import type { MochaOptions } from '../../lib/mocha/load-options';
+// Since we are using a few unexposed internal methods from Mocha,
+// we can't utilize the existing @types/mocha type definition.
 
 declare module 'mocha/lib/cli/lookup-files' {
   export = lookupFiles;
@@ -26,18 +25,4 @@ declare module 'mocha/lib/errors' {
 
 declare module 'mocha/lib/cli/options' {
   export declare function loadOptions(argv: string[]): { [key: string]: unknown };
-}
-
-declare module 'mocha/lib/cli/run-helpers' {
-  declare function handleRequires(requires?: string[]): Promise<unknown>;
-
-  declare function validatePlugin(
-    options: MochaOptions,
-    pluginType: string,
-    map?: { [key: string]: unknown }
-  ): void;
-
-  declare function loadRootHooks(
-    rootHooks: unknown[]
-  ): Promise<{ [key: string]: unknown }>;
 }
